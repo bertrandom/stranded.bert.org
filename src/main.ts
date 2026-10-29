@@ -30,6 +30,7 @@ window.addEventListener('scroll', () => {
 createPlayer(document.getElementById('player')!, {
     data: 'data/',
     shape: 'fill',
+    intro: false,       // straight to the island
     autoHide: false,    // with the rest of the hero, above
 })
     .then(() => {
