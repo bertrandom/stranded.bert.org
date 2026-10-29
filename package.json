@@ -1,0 +1,20 @@
+{
+  "name": "stranded.bert.org",
+  "private": true,
+  "type": "module",
+  "description": "The stranded-pi landing page, with Johnny Castaway playing live from stranded-web",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "data": "stranded-extract",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "stranded-web": "file:../stranded-web"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "vite": "^6.4.5"
+  }
+}

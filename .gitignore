@@ -1,0 +1,5 @@
+node_modules/
+dist/
+
+# Made by `npm run data` from the original game's data files
+public/data/
