@@ -360,8 +360,8 @@ kbd {
 
 @media (max-width: 640px) {
   .wrap { padding-left: 16px; padding-right: 16px; }
-  main.wrap { padding-top: 3px; }
-  main section { scroll-margin-top: 3px; }
+  main.wrap { padding-top: 24px; }
+  main section { scroll-margin-top: 24px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

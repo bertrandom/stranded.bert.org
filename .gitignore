@@ -4,3 +4,11 @@ dist/
 
 # Made by `npm run data` from the original game's data files
 public/data/
+
+# The SD card image and its Imager repository, copied in by stranded-pi's
+# image/build-site.sh
+public/images/
+public/repo.json
+
+# The original game's data files, which stranded-pi's setup.sh downloads
+public/resources/johnny.zip
