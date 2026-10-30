@@ -88,15 +88,22 @@
         <img src="/screenshots/imager-apply-and-restart.png" width="792" height="594" loading="lazy" alt="The Content Repository dialog with https://stranded.bert.org/repo.json entered, and an arrow pointing at Apply &amp; Restart">
       </li>
       <li>
-        <p>Once Imager restarts, choose your Pi, <b>Stranded</b> as the operating system and your SD card, set the hostname, Wi-Fi and a password, and write the card.</p>
+        <p>Once Imager restarts, its title bar says it's using data from stranded.bert.org. Choose your Raspberry Pi and click <b>Next</b>.</p>
+        <img src="/screenshots/imager-device.png" width="792" height="594" loading="lazy" alt="Imager's Select your Raspberry Pi device screen, with Raspberry Pi 3 selected and the title bar saying Using data from stranded.bert.org">
+      </li>
+      <li>
+        <p>Choose <b>Stranded</b> as the operating system and click <b>Next</b>.</p>
+        <img src="/screenshots/imager-os.png" width="792" height="594" loading="lazy" alt="Imager's Choose operating system screen, with an arrow pointing at Stranded">
+      </li>
+      <li>
+        <p>Choose your SD card, then fill in the customisation settings: hostname, localisation, a user and password, and Wi-Fi. I would recommend adding your SSH public key.</p>
+        <img src="/screenshots/imager-ssh.png" width="792" height="594" loading="lazy" alt="Imager's SSH authentication customisation screen, with SSH enabled and public key authentication selected">
+      </li>
+      <li>
+        <p>Write the card.</p>
       </li>
     </ol>
-    <p>On first boot the Pi applies your settings and starts Johnny, and his web page is at <code>http://&lt;hostname&gt;/</code>.</p>
-
-    <p>If you'd rather build the image yourself, it's Raspberry Pi OS Lite (64-bit) with stranded preinstalled. Build it with Docker, on a Mac with Apple Silicon or any machine that has it, and use the <code>repo.json</code> in <code>image/out</code> instead:</p>
-    <pre><code>git clone https://github.com/bertrandom/stranded-pi
-cd stranded-pi
-./image/build-docker.sh</code></pre>
+    <p>On first boot the Pi applies your settings and starts stranded. The web configuration is at <code>http://&lt;hostname&gt;/</code>.</p>
 
     <h3>Or use a Pi you already have</h3>
     <p>On a Pi running Raspberry Pi OS Lite (64-bit) Trixie, copy over the setup script and run it:</p>
