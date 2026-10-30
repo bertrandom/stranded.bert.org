@@ -90,11 +90,20 @@ build_web() { (cd "$WEB" && npm run build); }
 install_site() { (cd "$SITE" && npm install); }
 deploy_site() { "$SITE/deploy.sh"; }
 
-# Copies the image stranded-pi built last, as image/build-site.sh does
+# Copies the image stranded-pi built last, and removes all but the newest two,
+# as image/build-site.sh does
 copy_image() {
     mkdir -p "$SITE/public/images" &&
     cp "$PI/image/out/$image" "$PI/image/out/$image.sha256" "$SITE/public/images/" &&
-    cp "$PI/image/out/repo.json" "$SITE/public/repo.json"
+    cp "$PI/image/out/repo.json" "$SITE/public/repo.json" || return 1
+
+    local old
+    ls "$SITE/public/images" | grep '\.img\.xz$' | sort -rV | tail -n +3 |
+    while read -r old; do
+        [ "$old" = "$image" ] && continue
+        rm -f "$SITE/public/images/$old" "$SITE/public/images/$old.sha256"
+        note "Removed the older image $old"
+    done
 }
 
 echo "Fetching"
