@@ -27,38 +27,43 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 
-// The photos open larger in a lightbox, with their captions. The arrow keys
-// go between them, and a click anywhere or Escape closes it.
+// Links with data-lightbox open their image larger in a lightbox, with a
+// caption. The arrow keys go between the images in the same data-lightbox
+// group, and a click anywhere or Escape closes it. A data-tall image, like a
+// whole web page, opens at a readable width and scrolls.
 
 const lightbox = document.getElementById('lightbox') as HTMLDialogElement;
 const lightboxImage = lightbox.querySelector('img')!;
 const lightboxCaption = lightbox.querySelector('figcaption')!;
-const photos = [...document.querySelectorAll<HTMLElement>('.photos figure')];
+const lightboxLinks = [...document.querySelectorAll<HTMLAnchorElement>('a[data-lightbox]')];
+let group: HTMLAnchorElement[] = [];
 let shown = 0;
 
-function showPhoto(index: number) {
-    shown = (index + photos.length) % photos.length;
-    const photo = photos[shown];
-    const link = photo.querySelector('a')!;
+function showImage(index: number) {
+    shown = (index + group.length) % group.length;
+    const link = group[shown];
     lightboxImage.src = link.href;
-    lightboxImage.alt = photo.querySelector('img')!.alt;
+    lightboxImage.alt = link.dataset.alt ?? link.querySelector('img')?.alt ?? '';
     // Its own caption in the lightbox, if it has one, or the one on the page
-    lightboxCaption.textContent = link.dataset.caption ?? photo.querySelector('figcaption')?.textContent ?? '';
+    lightboxCaption.textContent = link.dataset.caption ?? link.closest('figure')?.querySelector('figcaption')?.textContent ?? '';
+    lightbox.classList.toggle('tall', 'tall' in link.dataset);
+    lightbox.scrollTop = 0;
 }
 
-photos.forEach((photo, index) => {
-    photo.querySelector('a')!.addEventListener('click', e => {
+for (const link of lightboxLinks) {
+    link.addEventListener('click', e => {
         e.preventDefault();
-        showPhoto(index);
+        group = lightboxLinks.filter(other => other.dataset.lightbox === link.dataset.lightbox);
+        showImage(group.indexOf(link));
         lightbox.showModal();
     });
-});
+}
 
 lightbox.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight')
-        showPhoto(shown + 1);
+        showImage(shown + 1);
     else if (e.key === 'ArrowLeft')
-        showPhoto(shown - 1);
+        showImage(shown - 1);
 });
 
 lightbox.addEventListener('click', () => lightbox.close());

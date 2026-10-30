@@ -309,6 +309,16 @@ pre {
   border-radius: 6px;
 }
 
+/* A tall image, like a whole web page, at a readable width, scrolling */
+.lightbox.tall { overflow-y: auto; }
+.lightbox.tall[open] { align-items: flex-start; }
+.lightbox.tall figure { max-height: none; }
+
+.lightbox.tall img {
+  width: min(720px, 100%);
+  max-height: none;
+}
+
 .lightbox figcaption {
   margin-top: 10px;
   color: rgba(255, 255, 255, .85);
