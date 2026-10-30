@@ -23,7 +23,7 @@
     <div class="topbar">
       <a class="brand" href="#johnny">Stranded</a>
       <nav>
-        <a href="#pi">Raspberry Pi</a>
+        <a href="#pi">Setup</a>
         <a href="#about">About</a>
         <a href="https://github.com/bertrandom/stranded-pi">GitHub</a>
       </nav>
@@ -41,7 +41,7 @@
 
   <section id="pi">
     <h2>stranded</h2>
-    <p>Have you ever wondered what it would be like to run <a href="https://en.wikipedia.org/wiki/Johnny_Castaway">Johnny Castaway</a> on a TV or monitor in your house all day, every day? Install this image on a Raspberry Pi and impress your aging friends or kids and later puzzle over why your electric bill seems higher at the end of the month.</p>
+    <p>Have you ever wondered what it would be like to run <a href="https://en.wikipedia.org/wiki/Johnny_Castaway">Johnny Castaway</a> on a TV or monitor in your house all day, every day? Wonder no more - install this image on a Raspberry Pi and impress your aging friends or kids and later puzzle over why your electric bill seems higher at the end of the month.</p>
 
     <div class="photos">
       <figure>
@@ -59,12 +59,12 @@
       <li>Widescreen support (16:9 or larger)</li>
       <li>Web Configuration</li>
       <li>JSON API</li>
-      <li>Quiet hours where the display shows nothing</li>
+      <li>Night hours where the display shows nothing</li>
     </ul>
   </section>
 
   <section id="setup">
-    <h2>Setting one up</h2>
+    <h2>Setup</h2>
     <p>You'll need a Raspberry Pi Zero 2 W, 3, 4 or 5, a microSD card, a power supply, and a screen that accepts HDMI.</p>
 
     <p>In my defense, both Raspberry Pis and microSD cards were a lot cheaper when I started this project. This <a href="https://www.amazon.com/dp/B09CYQL28N">8-inch 4:3 monitor</a> with metal housing is still about the same price, though.</p>
@@ -105,20 +105,11 @@
     </ol>
     <p>On first boot the Pi applies your settings and starts stranded. The web configuration is at <code>http://&lt;hostname&gt;/</code>.</p>
 
-    <h3>Or use a Pi you already have</h3>
-    <p>On a Pi running Raspberry Pi OS Lite (64-bit) Trixie, copy over the setup script and run it:</p>
-    <pre><code>scp setup.sh &lt;your Pi&gt;:
-ssh &lt;your Pi&gt; sudo ./setup.sh</code></pre>
-    <p>It installs the latest stranded release, fetches the game's data files, writes the default settings and starts Johnny. Run it again any time to update; it keeps your settings.</p>
-
-    <p>The rest, including the API, is in the <a href="https://github.com/bertrandom/stranded-pi#readme">stranded-pi README</a>.</p>
   </section>
 
   <section id="about">
     <h2>About</h2>
-    <p>Johnny Castaway was made by Dynamix and published by Sierra in 1992. What plays here is <a href="https://github.com/bertrandom/stranded">stranded</a>, built on Jérémie Guillaume's open source engine <a href="https://github.com/jno6809/jc_reborn">Johnny Reborn</a>. It was ported to TypeScript as <a href="https://github.com/bertrandom/stranded-web">stranded-web</a>, which draws every frame on a canvas from the original game's data.</p>
-    <p>Thanks to Hans Milling for <a href="https://github.com/nivs1978/Johnny-Castaway-Open-Source">Johnny Castaway Open Source</a>, to Alexandre Fontoura for <a href="https://github.com/xesf/castaway">castaway</a>, and to everyone who worked out how the original works. Johnny Castaway belongs to its rights holders. This is a fan project, with no ties to them.</p>
-    <p class="keys">With the picture selected: <kbd>Space</kbd> pauses, <kbd>Return</kbd> steps a frame while paused, <kbd>N</kbd> skips to the next scene, <kbd>M</kbd> runs at max speed and <kbd>F</kbd> goes full screen.</p>
+    <p>stranded is built on Jérémie Guillaume's open source engine <a href="https://github.com/jno6809/jc_reborn">Johnny Reborn</a>. Johnny Reborn already ran on the Raspberry Pi, but stranded adds some quality of life improvements for setting it up and running it.</p>
   </section>
 
 </main>
