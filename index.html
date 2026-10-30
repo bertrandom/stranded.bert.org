@@ -32,7 +32,7 @@
 
   <div class="pitch" id="pitch">
     <h1>Run Johnny Castaway on a Raspberry Pi</h1>
-    <p>Easily turn a Raspberry Pi into a dedicated Johnny Castaway screensaver by flashing an image onto an SD card.</p>
+    <p>Easily turn a Raspberry Pi into a dedicated Johnny Castaway art piece by flashing an image onto an SD card.</p>
     <a class="button" href="#pi">Sure, why not?</a>
   </div>
 </header>
@@ -40,22 +40,34 @@
 <main class="wrap">
 
   <section id="pi">
-    <p>Johnny Castaway was a screen saver for Windows 3.1. stranded-pi puts him on a Raspberry Pi hooked up to a TV or a spare monitor, where he can carry on all day. It's a little silly to keep a screen on just for him, but here we are.</p>
+    <h2>stranded</h2>
+    <p>Have you ever wondered what it would be like to run <a href="https://en.wikipedia.org/wiki/Johnny_Castaway">Johnny Castaway</a> on a TV or monitor in your house all day, every day? Install this image on a Raspberry Pi and impress your aging friends or kids and later puzzle over why your electric bill seems higher at the end of the month.</p>
 
-    <p>What it does:</p>
+    <div class="photos">
+      <figure>
+        <a href="/photos/eyoyo.jpg" data-caption="On a 8-inch 4:3 monitor, ignore the missile launch switch"><img src="/photos/eyoyo-small.jpg" width="800" height="600" alt="Johnny on his island, looking through a telescope, on a small 4:3 monitor on a shelf"></a>
+        <figcaption>On a 8-inch 4:3 monitor</figcaption>
+      </figure>
+      <figure>
+        <a href="/photos/frametv.jpg" data-caption="On a 43&quot; Samsung &quot;The Frame&quot; TV"><img src="/photos/frametv-small.jpg" width="800" height="600" alt="Johnny lying by a campfire on his island, across a widescreen TV on a wall"></a>
+        <figcaption>On a 43" Samsung "The Frame" TV</figcaption>
+      </figure>
+    </div>
+
+    <p>Features:</p>
     <ul>
-      <li>Plays every scene of the original (fishing, building the raft, Mary, Suzy, the Lilliputians), picked the way the original picked them, with the story moving on a day at a time over eleven days.</li>
-      <li>Fills a 16:9 screen without stretching anything: the ocean and sky carry on to the edges, and clouds, boats and Johnny go there too.</li>
-      <li>Has a night mode that pauses Johnny and turns the display off between hours you pick, putting a TV in standby over HDMI-CEC, and wakes it all up in the morning.</li>
-      <li>Has a web page at the Pi's address with a live preview, play and pause, skipping scenes, the night schedule and settings, plus a JSON API.</li>
-      <li>Updates itself to the latest stranded release from that page, which can reboot and shut down the Pi too.</li>
-      <li>Draws straight to the screen through KMS/DRM, with no desktop underneath, so it runs on anything from a Pi Zero 2 W to a Pi 5.</li>
+      <li>Widescreen support (16:9 or larger)</li>
+      <li>Web Configuration</li>
+      <li>JSON API</li>
+      <li>Quiet hours where the display shows nothing</li>
     </ul>
   </section>
 
   <section id="setup">
     <h2>Setting one up</h2>
-    <p>You'll need a Raspberry Pi Zero 2 W, 3, 4 or 5, a microSD card, a power supply, and a screen with HDMI.</p>
+    <p>You'll need a Raspberry Pi Zero 2 W, 3, 4 or 5, a microSD card, a power supply, and a screen that accepts HDMI.</p>
+
+    <p>In my defense, both microSD cards and Raspberry Pis were a lot cheaper when I started this project. This <a href="https://www.amazon.com/dp/B09CYQL28N">8-inch 4:3 monitor</a> with metal housing is still about the same price, though.</p>
 
     <h3>Flash an SD card</h3>
     <p>The image is Raspberry Pi OS Lite (64-bit) with stranded preinstalled. Build it with Docker, on a Mac with Apple Silicon or any machine that has it:</p>
@@ -85,6 +97,14 @@ ssh &lt;your Pi&gt; sudo ./setup.sh</code></pre>
 <footer class="footer wrap">
   <p>Free software under the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GPL v3</a>. Code: <a href="https://github.com/bertrandom/stranded">stranded</a>, <a href="https://github.com/bertrandom/stranded-pi">stranded-pi</a>, <a href="https://github.com/bertrandom/stranded-web">stranded-web</a>.</p>
 </footer>
+
+<dialog class="lightbox" id="lightbox" aria-label="Photo">
+  <figure>
+    <img alt="">
+    <figcaption></figcaption>
+  </figure>
+  <form method="dialog"><button aria-label="Close">×</button></form>
+</dialog>
 
 <script type="module" src="/src/main.ts"></script>
 </body>

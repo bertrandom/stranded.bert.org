@@ -27,6 +27,43 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 
+// The photos open larger in a lightbox, with their captions. The arrow keys
+// go between them, and a click anywhere or Escape closes it.
+
+const lightbox = document.getElementById('lightbox') as HTMLDialogElement;
+const lightboxImage = lightbox.querySelector('img')!;
+const lightboxCaption = lightbox.querySelector('figcaption')!;
+const photos = [...document.querySelectorAll<HTMLElement>('.photos figure')];
+let shown = 0;
+
+function showPhoto(index: number) {
+    shown = (index + photos.length) % photos.length;
+    const photo = photos[shown];
+    const link = photo.querySelector('a')!;
+    lightboxImage.src = link.href;
+    lightboxImage.alt = photo.querySelector('img')!.alt;
+    // Its own caption in the lightbox, if it has one, or the one on the page
+    lightboxCaption.textContent = link.dataset.caption ?? photo.querySelector('figcaption')?.textContent ?? '';
+}
+
+photos.forEach((photo, index) => {
+    photo.querySelector('a')!.addEventListener('click', e => {
+        e.preventDefault();
+        showPhoto(index);
+        lightbox.showModal();
+    });
+});
+
+lightbox.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight')
+        showPhoto(shown + 1);
+    else if (e.key === 'ArrowLeft')
+        showPhoto(shown - 1);
+});
+
+lightbox.addEventListener('click', () => lightbox.close());
+
+
 createPlayer(document.getElementById('player')!, {
     data: 'data/',
     shape: 'fill',

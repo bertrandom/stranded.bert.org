@@ -232,8 +232,8 @@ code, pre, kbd { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospac
   padding: 0 24px;
 }
 
-main { padding: 56px 24px 16px; }
-main section { margin-bottom: 48px; }
+main.wrap { padding-top: 19px; padding-bottom: 16px; }
+main section { margin-bottom: 48px; scroll-margin-top: 19px; }
 
 h2 { margin: 0 0 12px; font-size: 24px; line-height: 1.25; }
 h3 { margin: 28px 0 6px; font-size: 18px; }
@@ -258,6 +258,77 @@ pre {
   background: var(--code-bg);
 }
 
+.photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 0 0 20px;
+}
+
+.photos figure { margin: 0; }
+
+.photos img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  cursor: zoom-in;
+}
+
+.photos figcaption { margin-top: 6px; color: var(--muted); font-size: 14px; }
+
+.lightbox {
+  max-width: none;
+  max-height: none;
+  width: 100vw;
+  height: 100dvh;
+  margin: 0;
+  padding: 16px;
+  border: 0;
+  background: transparent;
+  cursor: zoom-out;
+}
+
+.lightbox[open] { display: flex; align-items: center; justify-content: center; }
+
+.lightbox::backdrop { background: rgba(0, 0, 0, .85); }
+
+.lightbox figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+}
+
+.lightbox img {
+  max-width: 100%;
+  /* Room below for the caption */
+  max-height: calc(100dvh - 80px);
+  border-radius: 6px;
+}
+
+.lightbox figcaption {
+  margin-top: 10px;
+  color: rgba(255, 255, 255, .85);
+  font-size: 15px;
+  text-align: center;
+}
+
+.lightbox button {
+  position: fixed;
+  top: 12px;
+  right: 16px;
+  padding: 0 8px;
+  border: 0;
+  background: none;
+  color: #fff;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+}
+
 .keys { color: var(--muted); font-size: 15px; }
 
 kbd {
@@ -277,8 +348,9 @@ kbd {
 .footer p { margin: 0; padding-top: 20px; border-top: 1px solid var(--border); }
 
 @media (max-width: 640px) {
-  .wrap, main { padding-left: 16px; padding-right: 16px; }
-  main { padding-top: 40px; }
+  .wrap { padding-left: 16px; padding-right: 16px; }
+  main.wrap { padding-top: 3px; }
+  main section { scroll-margin-top: 3px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
