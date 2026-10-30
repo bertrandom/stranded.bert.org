@@ -26,7 +26,9 @@
     <div class="topbar">
       <a class="brand" href="#johnny">Stranded</a>
       <nav>
-        <a href="#pi">Setup</a>
+        <a href="#pi">Introduction</a>
+        <a href="#setup">Setup</a>
+        <a href="#usage">Usage</a>
         <a href="#about">About</a>
         <a href="https://github.com/bertrandom/stranded-pi">GitHub</a>
       </nav>
@@ -108,6 +110,27 @@
     </ol>
     <p>On first boot the Pi applies your settings and starts stranded. The web configuration is at <code>http://&lt;hostname&gt;/</code>.</p>
 
+  </section>
+
+  <section id="usage">
+    <h2>Usage</h2>
+    <p>Once it's running, Johnny carries on by himself. Everything else is on the <a href="/screenshots/web-configuration.png" data-lightbox="web-configuration" data-tall data-alt="stranded's web page on a Pi: a live preview of Johnny on his island at night, how long he's been stranded, playback buttons, night mode, settings, updates, and restart, reboot and shut down buttons" data-caption="The web page on a Pi, at http://&lt;hostname&gt;/">web page</a> at <code>http://&lt;hostname&gt;/</code>:</p>
+    <ul>
+      <li>A live preview of the screen, and which scene is playing</li>
+      <li>Pause, step a frame, skip to the next scene, or run at max speed</li>
+      <li>Change the day of the story, the brightness, and turn the sound on or off</li>
+      <li>Night mode, which pauses Johnny and turns the display off between the hours you pick, and puts a TV in standby too if it supports HDMI-CEC</li>
+      <li>Check for updates and install the latest release of stranded</li>
+      <li>Restart stranded, or reboot or shut down the Pi</li>
+    </ul>
+    <p>There's no password, so anyone on your network can do all of that.</p>
+
+    <p>With a keyboard plugged into the Pi, <kbd>Space</kbd> pauses, <kbd>Return</kbd> steps a frame while paused, <kbd>N</kbd> skips to the next scene and <kbd>M</kbd> toggles max speed. <kbd>Esc</kbd> quits, and stranded starts again a few seconds later.</p>
+
+    <p>Everything on the web page is also available as a JSON API:</p>
+    <pre><code>curl http://&lt;hostname&gt;/api/status
+curl -X POST http://&lt;hostname&gt;/api/toggle-pause</code></pre>
+    <p><code>http://&lt;hostname&gt;/api</code> lists every endpoint and setting, and <a href="https://github.com/bertrandom/stranded#api">stranded's README</a> describes them.</p>
   </section>
 
   <section id="about">
