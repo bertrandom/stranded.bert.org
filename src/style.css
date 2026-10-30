@@ -329,6 +329,17 @@ pre {
   cursor: pointer;
 }
 
+.steps li { margin-bottom: 20px; }
+.steps p { margin-bottom: 8px; }
+.steps code { overflow-wrap: anywhere; }
+
+.steps img {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+}
+
 .keys { color: var(--muted); font-size: 15px; }
 
 kbd {

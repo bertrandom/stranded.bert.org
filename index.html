@@ -67,14 +67,36 @@
     <h2>Setting one up</h2>
     <p>You'll need a Raspberry Pi Zero 2 W, 3, 4 or 5, a microSD card, a power supply, and a screen that accepts HDMI.</p>
 
-    <p>In my defense, both microSD cards and Raspberry Pis were a lot cheaper when I started this project. This <a href="https://www.amazon.com/dp/B09CYQL28N">8-inch 4:3 monitor</a> with metal housing is still about the same price, though.</p>
+    <p>In my defense, both Raspberry Pis and microSD cards were a lot cheaper when I started this project. This <a href="https://www.amazon.com/dp/B09CYQL28N">8-inch 4:3 monitor</a> with metal housing is still about the same price, though.</p>
 
     <h3>Flash an SD card</h3>
-    <p>The image is Raspberry Pi OS Lite (64-bit) with stranded preinstalled. Build it with Docker, on a Mac with Apple Silicon or any machine that has it:</p>
+    <ol class="steps">
+      <li>
+        <p>Download and install the <a href="https://www.raspberrypi.com/software/">Raspberry Pi Imager</a>, open it, and click <b>App Options</b>.</p>
+        <img src="/screenshots/imager-app-options.png" width="792" height="594" loading="lazy" alt="Raspberry Pi Imager's first screen, with an arrow pointing at the App Options button">
+      </li>
+      <li>
+        <p>Next to <b>Content Repository</b>, click <b>Edit</b>.</p>
+        <img src="/screenshots/imager-content-repository.png" width="792" height="594" loading="lazy" alt="The App Options dialog, with an arrow pointing at the Edit button next to Content Repository">
+      </li>
+      <li>
+        <p>Choose <b>Use custom URL</b>.</p>
+        <img src="/screenshots/imager-custom-url.png" width="792" height="594" loading="lazy" alt="The Content Repository dialog, with Use custom URL selected and an empty URL field">
+      </li>
+      <li>
+        <p>Enter <code>https://stranded.bert.org/repo.json</code> and click <b>Apply &amp; Restart</b>.</p>
+        <img src="/screenshots/imager-apply-and-restart.png" width="792" height="594" loading="lazy" alt="The Content Repository dialog with https://stranded.bert.org/repo.json entered, and an arrow pointing at Apply &amp; Restart">
+      </li>
+      <li>
+        <p>Once Imager restarts, choose your Pi, <b>Stranded</b> as the operating system and your SD card, set the hostname, Wi-Fi and a password, and write the card.</p>
+      </li>
+    </ol>
+    <p>On first boot the Pi applies your settings and starts Johnny, and his web page is at <code>http://&lt;hostname&gt;/</code>.</p>
+
+    <p>If you'd rather build the image yourself, it's Raspberry Pi OS Lite (64-bit) with stranded preinstalled. Build it with Docker, on a Mac with Apple Silicon or any machine that has it, and use the <code>repo.json</code> in <code>image/out</code> instead:</p>
     <pre><code>git clone https://github.com/bertrandom/stranded-pi
 cd stranded-pi
 ./image/build-docker.sh</code></pre>
-    <p>Then, in <a href="https://www.raspberrypi.com/software/">Raspberry Pi Imager</a>, open <b>App Options</b> and set <b>Content Repository</b> to the <code>repo.json</code> in <code>image/out</code>. Choose your Pi, <b>Stranded</b> as the operating system and your SD card, set the hostname, Wi-Fi and a password, and write the card. On first boot the Pi applies your settings and starts Johnny, and his web page is at <code>http://&lt;hostname&gt;/</code>.</p>
 
     <h3>Or use a Pi you already have</h3>
     <p>On a Pi running Raspberry Pi OS Lite (64-bit) Trixie, copy over the setup script and run it:</p>
