@@ -64,6 +64,19 @@ lightbox.addEventListener('keydown', e => {
 lightbox.addEventListener('click', () => lightbox.close());
 
 
+// In-page links scroll to their section without adding #section to the URL
+
+for (const link of document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')) {
+    link.addEventListener('click', e => {
+        const target = document.getElementById(link.hash.slice(1));
+        if (!target)
+            return;
+        e.preventDefault();
+        target.scrollIntoView();
+    });
+}
+
+
 createPlayer(document.getElementById('player')!, {
     data: 'data/',
     shape: 'fill',
